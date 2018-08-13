@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	if (new Promise(function(){})){
+		var job1 = function(resolve,reject) {
+           reject('job1')
+		}
+		var job = new Promise(job1)
+        job.then(function(success){
+          return new Promise(function(resolve,reject){
+            reject('joberror')
+          })
+        }).then(function(success){
+        	console.log(success,'job2')
+        }).catch(function(error){
+        	console.log('error',error)
+        })
+	}
+</script>
+</html>
